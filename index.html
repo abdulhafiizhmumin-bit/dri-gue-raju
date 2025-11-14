@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BOKUR JANGAN MUNDUR 💌</title>
+<style>
+  body {
+    background: linear-gradient(135deg, #ffd6e0, #cce7ff);
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    color: #333;
+    overflow-x: hidden;
+  }
+  h1 {
+    margin-top: 80px;
+    font-size: 2.5em;
+    color: #ff4b81;
+    animation: pop 1.5s ease-in-out infinite alternate;
+  }
+  @keyframes pop {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+  }
+  .puzzle {
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    gap: 5px;
+    justify-content: center;
+  }
+  .piece {
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .piece:hover {
+    background: #ffe6ef;
+  }
+  #message {
+    font-size: 1.2em;
+    color: #444;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  #final {
+    display: none;
+    font-size: 1.8em;
+    margin-top: 50px;
+    color: #ff4b81;
+  }
+  audio {
+    margin-top: 30px;
+  }
+</style>
+</head>
+<body>
+
+<h1>BOKUR JANGAN MUNDUR 💞</h1>
+<p>Klik kotaknya berurutan dari 1 sampai 9, ya 😚</p>
+
+<div class="puzzle" id="puzzle"></div>
+<p id="message"></p>
+<div id="final">💖 Kamu hebat banget, semangat terus ya 💖</div>
+
+<audio controls autoplay loop>
+  <source src="Rex Orange County - Best Friend (Official Audio).mp3 " type="audio/mpeg">
+</audio>
+
+<script>
+const puzzle = document.getElementById("puzzle");
+const message = document.getElementById("message");
+const final = document.getElementById("final");
+
+let numbers = [1,2,3,4,5,6,7,8,9].sort(() => Math.random() - 0.5);
+let next = 1;
+
+numbers.forEach(n => {
+  let div = document.createElement("div");
+  div.className = "piece";
+  div.textContent = n;
+  div.onclick = () => {
+    if (parseInt(div.textContent) === next) {
+      div.style.background = "#b3ffcc";
+      next++;
+      if (next > 9) {
+        message.textContent = "🎉 Puzzle selesai!";
+        setTimeout(() => {
+          final.style.display = "block";
+        }, 1000);
+      } else {
+        message.textContent = "Bagus! Lanjut ke " + next;
+      }
+    } else {
+      message.textContent = "Oops, coba lagi ya 😅";
+    }
+  };
+  puzzle.appendChild(div);
+});
+</script>
+
+</body>
+</html>
