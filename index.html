@@ -1,110 +1,163 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BOKUR JANGAN MUNDUR 💌</title>
-<style>
-  body {
-    background: linear-gradient(135deg, #ffd6e0, #cce7ff);
-    font-family: "Poppins", sans-serif;
-    text-align: center;
-    color: #333;
-    overflow-x: hidden;
-  }
-  h1 {
-    margin-top: 80px;
-    font-size: 2.5em;
-    color: #ff4b81;
-    animation: pop 1.5s ease-in-out infinite alternate;
-  }
-  @keyframes pop {
-    from { transform: scale(1); }
-    to { transform: scale(1.05); }
-  }
-  .puzzle {
-    margin: 30px auto;
-    display: grid;
-    grid-template-columns: repeat(3, 100px);
-    gap: 5px;
-    justify-content: center;
-  }
-  .piece {
-    width: 100px;
-    height: 100px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    font-size: 2em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  .piece:hover {
-    background: #ffe6ef;
-  }
-  #message {
-    font-size: 1.2em;
-    color: #444;
-    margin-top: 20px;
-    font-weight: bold;
-  }
-  #final {
-    display: none;
-    font-size: 1.8em;
-    margin-top: 50px;
-    color: #ff4b81;
-  }
-  audio {
-    margin-top: 30px;
-  }
-</style>
+    <meta charset="UTF-8">
+    <title>BOKUR JANGAN MUNDUR</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ffd4ec, #d8ecff);
+            text-align: center;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #ff5fa6;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        #game {
+            margin: auto;
+            width: 300px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .number {
+            background: #fff;
+            border-radius: 12px;
+            padding: 25px 0;
+            font-size: 22px;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+        }
+
+        .number:hover {
+            transform: scale(1.07);
+            background: #ffe7f5;
+        }
+
+        /* Tombol pesan */
+        #openBtn {
+            display: none;
+            margin-top: 25px;
+            background: #ff5fa6;
+            border: none;
+            padding: 12px 25px;
+            color: white;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+        }
+
+        #openBtn:hover {
+            transform: scale(1.08);
+        }
+
+        /* Pesan */
+        #message {
+            margin-top: 30px;
+            padding: 25px;
+            width: 85%;
+            background: white;
+            border-radius: 15px;
+            font-size: 18px;
+            line-height: 1.5;
+            display: none;
+            text-align: left;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+            animation: showMsg 0.6s ease forwards;
+        }
+
+        @keyframes showMsg {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .done {
+            background: #d1ffd7 !important;
+            color: #3a8f3a;
+        }
+    </style>
 </head>
 <body>
 
-<h1>BOKUR JANGAN MUNDUR 💞</h1>
-<p>Klik kotaknya berurutan dari 1 sampai 9, ya 😚</p>
+<h1>BOKUR JANGAN MUNDUR 💗</h1>
 
-<div class="puzzle" id="puzzle"></div>
-<p id="message"></p>
-<div id="final">💖 Kamu hebat banget, semangat terus ya 💖</div>
+<p>Klik angka berurutan mulai dari 1 ya cungkring ↓</p>
 
+<!-- Game container -->
+<div id="game"></div>
+
+<button id="openBtn" onclick="openMessage()">Baca Pesannya 💌</button>
+
+<!-- Pesan -->
+<div id="message">
+    <strong>Woi nettt, si bokur, si ajg, si so kuat, si cungkring, si s.r</strong><br><br>
+
+    Penutup hari ini ya buat lu, maaf banget ya buat ganggu lu, tapi semoga aja lu baca cerita ini bisa tidur yekan.<br><br>
+
+    Gua tau lu orgnya sibuk bgt, bahkan juga tugas sklh lu bejibun saking banyaknya, eskul ga kelar-kelar, sampe kayanya waktu istirahat lu cuman sedetik—detik itu kayanya juga dipake buat lu ngeluh, tapi gua jujur banget sama lu… gua salut, gua bangga.  
+    Elu masih bisa jalanin semuanya tanpa ngeluh panjang (kayanya ya jing).<br><br>
+
+    Gua ngerti ko… kadang lu cape banget, rasanya pengen rebahan, pengen ilang dari bumi gara-gara tugas lu yang saking banyaknya itu.  
+    Terus soal orang-orang yang deketin lu… HHAHAHAHAHAHAH ya gua cuma mau bilang: ga semua yang dateng itu… ya lu tau lah.<br><br>
+
+    Gua tau lu banyak temennya, tapi gua MAU BANGET lu cerita sama gua jing HHAHAHAHA BABI, bokur.  
+    Gua bakalan seneng kalo lu cerita ke gua walaupun cuman ketik “cape” doang. Hal sekecil apapun itu bisa ngebuat gua semangat juga.  
+    Apalagi waktu gua kasih playlist ke elu, energi gua langsung naik banget, mood juga bagus.<br><br>
+
+    Jadi kalo lu cape jangan cari kopi… cari gua aja HHAHAHAHAHA cungkring.  
+    Semangat buat lu net, semoga ya… semoga.  
+    Gua… salut. Keren. Mantap.
+</div>
 <audio controls autoplay loop>
   <source src="Rex Orange County - Best Friend (Official Audio).mp3 " type="audio/mpeg">
 </audio>
-
 <script>
-const puzzle = document.getElementById("puzzle");
-const message = document.getElementById("message");
-const final = document.getElementById("final");
+    const game = document.getElementById("game");
+    const openBtn = document.getElementById("openBtn");
+    const message = document.getElementById("message");
 
-let numbers = [1,2,3,4,5,6,7,8,9].sort(() => Math.random() - 0.5);
-let next = 1;
+    let numbers = [];
+    for (let i = 1; i <= 12; i++) numbers.push(i);
+    numbers.sort(() => Math.random() - 0.5);
 
-numbers.forEach(n => {
-  let div = document.createElement("div");
-  div.className = "piece";
-  div.textContent = n;
-  div.onclick = () => {
-    if (parseInt(div.textContent) === next) {
-      div.style.background = "#b3ffcc";
-      next++;
-      if (next > 9) {
-        message.textContent = "🎉 Puzzle selesai!";
-        setTimeout(() => {
-          final.style.display = "block";
-        }, 1000);
-      } else {
-        message.textContent = "Bagus! Lanjut ke " + next;
-      }
-    } else {
-      message.textContent = "Oops, coba lagi ya 😅";
+    let current = 1;
+
+    function renderGame() {
+        numbers.forEach(num => {
+            const div = document.createElement("div");
+            div.className = "number";
+            div.textContent = num;
+
+            div.onclick = () => {
+                if (num === current) {
+                    div.classList.add("done");
+                    div.style.pointerEvents = "none";
+                    current++;
+
+                    if (current === 13) {
+                        openBtn.style.display = "inline-block";
+                    }
+                }
+            };
+
+            game.appendChild(div);
+        });
     }
-  };
-  puzzle.appendChild(div);
-});
+
+    function openMessage() {
+        message.style.display = "block";
+        openBtn.style.display = "none";
+    }
+
+    renderGame();
 </script>
 
 </body>
